@@ -6,7 +6,7 @@ void main() {
   runApp(MaterialApp(
     home: HomePage(),
     theme: ThemeData(
-      primarySwatch: Colors.purple,
+      primarySwatch: Colors.red,
     ),
   ));
 }
@@ -18,8 +18,37 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           title: Text("Awesome App"),
         ),
-        body: Container(
-          child: Text('Hello World'),
+        body: Center(
+          child: Container(
+            padding: const EdgeInsets.all(10),
+            // color: Colors.red,
+            // clipBehavior: Clip.antiAlias,
+            width: 100,
+            height: 100,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.circular(10),
+                gradient: LinearGradient(
+                    colors: [Colors.pink, Colors.purple]),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey,
+                    blurRadius: 10,
+                    spreadRadius: 1,
+                  ),
+                ]
+                // shape: BoxShape.circle,
+                ),
+            child: Text(
+              "I am a Box",
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
         ));
   }
 }

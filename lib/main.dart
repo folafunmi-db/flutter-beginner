@@ -18,36 +18,39 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           title: Text("Awesome App"),
         ),
-        body: Center(
-          child: Container(
-            padding: const EdgeInsets.all(10),
-            // color: Colors.red,
-            // clipBehavior: Clip.antiAlias,
-            width: 100,
-            height: 100,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(10),
-                gradient: LinearGradient(
-                    colors: [Colors.pink, Colors.purple]),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey,
-                    blurRadius: 10,
-                    spreadRadius: 1,
-                  ),
-                ]
-                // shape: BoxShape.circle,
-                ),
-            child: Text(
-              "I am a Box",
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
+        body: Container(
+          height: 500,
+          color: Colors.cyan[400],
+          child: Row( // Same can be done using the Column widget
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            // mainAxisSize: max, // this depends on the parent
+            children: [
+              Container(
+                // clipBehavior: Clip.antiAlias,
+                padding: const EdgeInsets.all(10),
+                width: 100,
+                height: 100,
+                alignment: Alignment.center,
+                color: Colors.red,
               ),
-            ),
+              Container(
+                // clipBehavior: Clip.antiAlias,
+                padding: const EdgeInsets.all(10),
+                width: 100,
+                height: 100,
+                alignment: Alignment.center,
+                color: Colors.yellow,
+              ),
+              Container(
+                // clipBehavior: Clip.antiAlias,
+                padding: const EdgeInsets.all(10),
+                width: 100,
+                height: 100,
+                alignment: Alignment.center,
+                color: Colors.green,
+              ),
+            ],
           ),
         ));
   }

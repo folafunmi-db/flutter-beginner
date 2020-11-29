@@ -6,7 +6,7 @@ void main() {
   runApp(MaterialApp(
     home: HomePage(),
     theme: ThemeData(
-      primarySwatch: Colors.red,
+      primarySwatch: Colors.purple,
     ),
   ));
 }
@@ -15,43 +15,49 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Awesome App"),
-        ),
-        body: Container(
-          height: 500,
+      appBar: AppBar(
+        title: Text("Awesome App"),
+      ),
+      body: Center(
+        child: Container(
+          height: 100,
+          width: 100,
           color: Colors.cyan[400],
-          child: Row( // Same can be done using the Column widget
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            // mainAxisSize: max, // this depends on the parent
-            children: [
-              Container(
-                // clipBehavior: Clip.antiAlias,
-                padding: const EdgeInsets.all(10),
-                width: 100,
-                height: 100,
-                alignment: Alignment.center,
-                color: Colors.red,
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: const EdgeInsets.all(0),
+          children: [
+            UserAccountsDrawerHeader(
+              accountName: Text("Folafunmi"),
+              accountEmail: Text("folafunmimustapha@gmail.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: NetworkImage("https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80"),
               ),
-              Container(
-                // clipBehavior: Clip.antiAlias,
-                padding: const EdgeInsets.all(10),
-                width: 100,
-                height: 100,
-                alignment: Alignment.center,
-                color: Colors.yellow,
-              ),
-              Container(
-                // clipBehavior: Clip.antiAlias,
-                padding: const EdgeInsets.all(10),
-                width: 100,
-                height: 100,
-                alignment: Alignment.center,
-                color: Colors.green,
-              ),
-            ],
-          ),
-        ));
+              decoration: BoxDecoration(color: Colors.purple[300]),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text('Name'),
+              subtitle: Text('Folafunmi'),
+              trailing: Icon(Icons.edit),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text('Role'),
+              subtitle: Text('Developer'),
+              trailing: Icon(Icons.edit),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.edit),
+        // mini: true
+      ),
+    );
   }
 }

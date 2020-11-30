@@ -11,29 +11,66 @@ void main() {
   ));
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  var myText = "Change My Name";
+  TextEditingController _nameController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: Text("Awesome App"),
       ),
       body: Center(
-        child: Container(
-          height: 100,
-          width: 100,
-          color: Colors.cyan[400],
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: SingleChildScrollView(
+            child: Card(
+                child: Column(
+              children: <Widget>[
+                Image.asset(
+                  'assets/coding.jpg',
+                  // width: 100,
+                  // height: 100,
+                  // fit: BoxFit.contain,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(myText,
+                    style:
+                        TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: TextField(
+                    controller: _nameController,
+                    decoration: InputDecoration(
+                        hintText: "Enter some Text",
+                        labelText: 'Name',
+                        border: OutlineInputBorder()),
+                  ),
+                )
+              ],
+            )),
+          ),
         ),
       ),
       drawer: Drawer(
         child: ListView(
           padding: const EdgeInsets.all(0),
-          children: [
+          children: <Widget>[
             UserAccountsDrawerHeader(
               accountName: Text("Folafunmi"),
               accountEmail: Text("folafunmimustapha@gmail.com"),
               currentAccountPicture: CircleAvatar(
-                backgroundImage: NetworkImage("https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80"),
+                backgroundImage: NetworkImage(
+                    "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80"),
               ),
               decoration: BoxDecoration(color: Colors.purple[300]),
             ),
@@ -54,8 +91,11 @@ class HomePage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.edit),
+        onPressed: () {
+          myText = _nameController.text;
+          setState(() {});
+        },
+        child: Icon(Icons.send),
         // mini: true
       ),
     );
